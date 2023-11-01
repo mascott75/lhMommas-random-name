@@ -7,7 +7,7 @@ html, body {
 
 #box {
     height:100vh;
-    background: url(./Images/heartBackground.jpg);
+    background: url(./Images/heart.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
   }
