@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Extract Random Word After @</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="box">
+    <div id="tri">
+        <label id="enterLabel" for="inputText">List:</label>
+        <textarea id="inputText" rows="4" cols="50"></textarea>
+        <button id="go" onclick="extractAndDisplayRandomWord()">Let's do this!</button>
+    </div>
+    <div id="winner">
+        <p>Today's winner is:</p>
+        <p id="randomWord"></p>
+    </div>
+    </div>
+
+  <script>
+    function extractWordsAfterAt(inputText) {
+      // Split the input text into words
+      var words = inputText.split(/\s+/);
+
+      // Create an array to store words after @
+      var wordsAfterAt = [];
+
+      // Iterate through the words
+      for (var i = 0; i < words.length; i++) {
+        // Check if the word starts with "@" and is not just "@"
+        if (words[i].startsWith("@") && words[i].length > 1) {
+          // Remove any special characters from the word (e.g., punctuation)
+          var cleanedWord = words[i].replace(/[^a-zA-Z0-9]@/g, '');
+
+          // Add the cleaned word (without @) to the wordsAfterAt array
+          wordsAfterAt.push(cleanedWord.substring(1));
+        }
+      }
+
+      return wordsAfterAt;
+    }
+
+    function getRandomWord(wordArray) {
+      if (wordArray.length === 0) {
+        return null;
+      }
+      var randomIndex = Math.floor(Math.random() * wordArray.length);
+      return wordArray[randomIndex];
+    }
+
+    function extractAndDisplayRandomWord() {
+      // Get the input text from the textarea
+      var inputText = document.getElementById("inputText").value;
+
+      // Extract words after @ from the input text
+      var wordsAfterAt = extractWordsAfterAt(inputText);
+
+      // Get a random word from the array
+      var randomWord = getRandomWord(wordsAfterAt);
+
+      // Display the random word
+      var randomWordDisplay = document.getElementById("randomWord");
+      if (randomWord) {
+        randomWordDisplay.textContent = randomWord;
+      } else {
+        randomWordDisplay.textContent = "Error: Please populate a list with @ signs";
+      }
+    }
+  </script>
+</body>
+</html>
