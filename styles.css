@@ -1,0 +1,49 @@
+
+
+html, body {
+    margin:0px;
+    height: 100%;
+}
+
+#box {
+    height:100vh;
+    background: url(./Images/heartBackground.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+#tri {
+    position: absolute;
+    bottom: 50%;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#enterLabel{
+    font-size: xx-large;
+    font-family: cursive;
+    color: white;
+    font-size: 3vw;
+}
+
+#inputText {
+    background-color: transparent;
+    border: 4px solid white;
+    width: 25vw;
+}
+
+#go {
+    background-color: #d22c20;
+    color: white;
+    font-size: 2vw;
+    font-family: cursive;
+}
+
+#winner {
+    position: absolute;
+    bottom: 50%;
+    left: 53%;
+    font-size: 3vw;
+}

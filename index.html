@@ -2,13 +2,21 @@
 <html>
 <head>
   <title>Extract Random Word After @</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <label for="inputText">Enter a paragraph:</label>
-  <textarea id="inputText" rows="4" cols="50"></textarea>
-  <button onclick="extractAndDisplayRandomWord()">Let's do this!</button>
-  <p>Random word after @:</p>
-  <p id="randomWord"></p>
+    <div id="box">
+    <div id="tri">
+        <label id="enterLabel" for="inputText">List:</label>
+        <textarea id="inputText" rows="4" cols="50"></textarea>
+        <button id="go" onclick="extractAndDisplayRandomWord()">Let's do this!</button>
+    </div>
+    <div id="winner">
+        <p>Today's winner is:</p>
+        <p id="randomWord"></p>
+    </div>
+    </div>
 
   <script>
     function extractWordsAfterAt(inputText) {
@@ -23,7 +31,7 @@
         // Check if the word starts with "@" and is not just "@"
         if (words[i].startsWith("@") && words[i].length > 1) {
           // Remove any special characters from the word (e.g., punctuation)
-          var cleanedWord = words[i].replace(/[^a-zA-Z0-9]/g, '');
+          var cleanedWord = words[i].replace(/[^a-zA-Z0-9]@/g, '');
 
           // Add the cleaned word (without @) to the wordsAfterAt array
           wordsAfterAt.push(cleanedWord.substring(1));
@@ -56,7 +64,7 @@
       if (randomWord) {
         randomWordDisplay.textContent = randomWord;
       } else {
-        randomWordDisplay.textContent = "No words after @ found.";
+        randomWordDisplay.textContent = "Error: Please populate a list with @ signs";
       }
     }
   </script>
